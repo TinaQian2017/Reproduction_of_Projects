@@ -1,0 +1,48 @@
+---
+title: "Report"  
+Author: "Yue (Tina) Qian"  
+date: "2017-12-08"  
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Question and Hypothesis
+By using the Iris dataset published online, I try to study if species influences the sepal length. Personally, I think species can influence the sepal length, since different species should have different features. To test my hypothesis, I run a linear regression test among the categorical varaible "species" and the continuous variable "sepal length", where the null hypothesis is that species has no influence on the sepal length.
+
+
+### Original Data
+
+The Iris dataset is download from the internet. The structure of the data is shown below. 
+```{r data, echo=FALSE}
+data<-read.csv("../data/data.csv",header = T)
+head(data)
+str(data)
+```
+### Simulated Data 
+
+Since I am only interested in the species' influence on sepal length, I exclude other irrelevant attributes here. After the cleaning, the data looks like:
+
+```{r data_used, echo=FALSE}
+data<-read.csv("../results/simulated_data/summarized_data.csv",header = T)
+head(data)
+str(data)
+```
+
+
+### Data Visualization
+
+![plot](../results/final_results/plot_data.png)
+
+
+### Statistical Summaries of the Linear Regression Test
+```{r}
+summary<-read.csv("../results/final_results/lm_result.csv",header = T)
+summary
+```
+
+
+### Analysis Result
+As shown in the plot above, the means of sepal length among the three species are quite different. According to the statistical summary table, species "setosa" has a mean sepal length of 5.006, the estimate in line 1. The p values shown in line 2 and line 3 are smaller than 0.05, so we reject the null hypothesis, indicating the difference of mean sepal length between "setosa" and "versucolor"/"virginica" is not zero. Therefore, I conclude that species do have an influence on the sepal length.    
